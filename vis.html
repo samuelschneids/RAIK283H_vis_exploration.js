@@ -32,17 +32,75 @@
     // create an array with nodes
     var nodes = new vis.DataSet([{
       id: 1,
-      label: 'Node 1',
+      label: 'Samuel',
     }, {
       id: 2,
-      label: 'Node 2',
-    }, ]);
+      label: 'Cole',
+    },
+    {
+      id: 3,
+      label: 'Parker',
+    },
+    {
+      id: 4,
+      label: 'Dan',
+    },
+    {
+      id: 5,
+      label: 'Michael',
+    },
+    {
+      id: 6,
+      label: 'Devin',
+    },
+    {
+      id: 7,
+      label: 'Caleb',
+    },
+    {
+      id: 8,
+      label: 'Bryce',
+    }, 
+    {
+      id: 9,
+      label: 'Jayden',
+    },
+    {
+      id: 10,
+      label: 'Andy',
+    },
+  ]);
 
     // create an array with edges
     var edges = new vis.DataSet([{
       from: 1,
       to: 2
-    }, ]);
+    },
+    {
+      from: 3,
+      to: 4
+    }, 
+    {
+      from: 5,
+      to: 6
+    },
+    {
+      from: 7,
+      to: 8
+    },
+    {
+      from: 4,
+      to: 5
+    },
+    {
+      from: 1,
+      to: 3
+    },
+    {
+      from: 9,
+      to: 10
+    },
+  ]);
 
     // create a network
     var container = document.getElementById('mynetwork');
@@ -50,8 +108,21 @@
       nodes: nodes,
       edges: edges
     };
-    var options = {};
+    var options = {nodes};
+    options.nodes = {color : { background:'red', border : 'black'}, shape : 'box', borderwidth : 5};
+    nodes.color = {border : 'black', background : 'yellow'};
     var network = new vis.Network(container, data, options);
+    
+    let parkerNode = nodes.get(3);
+    let samNode = nodes.get(1);
+    parkerNode.color = {border : 'orange', background : 'yellow', highlight : {border : 'orange', background :'yellow'}};
+    samNode.color = {border : 'orange', background : 'yellow', highlight : {border : 'orange', background :'yellow'}};
+
+    nodes.update(parkerNode);
+    nodes.update(samNode);
+
+    console.log(network.getConnectedNodes(3));
+
   </script>
 
 
